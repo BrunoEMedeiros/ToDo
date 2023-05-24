@@ -19,7 +19,7 @@
     }
 
     main{
-        background-color: black;
+        background-color: rgb(17, 16, 16);
 
         width: 40%;
         height: 100%;
@@ -62,10 +62,35 @@
         border-radius: 30%;
     }
 
+    .botoes{
+        font-size: 1rem;
+    }
+
+    /* (Chrome, Safari, versões mais recentes do Opera) */
+    .content::-webkit-scrollbar{
+        display: none;
+    }
+
+    .content{
+        height: 58rem;
+        padding: 1rem;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
     ul{
         list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
-    
     article{
+        padding: 1rem;
+        border-radius: 1rem;
         font-size: 3rem;
+        background-color: aliceblue;
+        color: black;
+
+        display: flex;
+        justify-content: space-between;
     }
