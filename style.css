@@ -1,0 +1,71 @@
+
+    *{
+        margin: 0;
+        padding: 0;
+        
+        box-sizing: border-box;
+    }
+
+    html, body{
+        font-size: 62.5%;
+        font-family: 'Courier New', Courier, monospace;
+        height: 100%;
+    }
+
+    #root{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    main{
+        background-color: black;
+
+        width: 40%;
+        height: 100%;
+
+        color: aliceblue;
+    }
+
+    h1{
+        font-size: 5rem;
+    }
+
+    .header{
+        border: .2rem solid whitesmoke;
+        border-left: 0;
+        border-right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 1rem 1.5rem;
+    }
+
+    input{
+        width: 70%;
+        font-size: 2.5rem;
+        padding: 1.5rem 1rem;
+        background-color: black;
+        color: aliceblue;
+        border: none;
+    }
+
+    input::placeholder{
+        color: whitesmoke;
+    }
+
+    button{
+        font-size: 4rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 30%;
+    }
+
+    ul{
+        list-style: none;
+    }
+    
+    article{
+        font-size: 3rem;
+    }
