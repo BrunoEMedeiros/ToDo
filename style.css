@@ -55,15 +55,33 @@
         color: whitesmoke;
     }
 
-    button{
+    #add{    
         font-size: 4rem;
         width: 5rem;
         height: 5rem;
         border-radius: 30%;
+        cursor: pointer;
+    }
+
+    #add:hover{
+        background-color: lightgray
+
     }
 
     .botoes{
         font-size: 1rem;
+        border-radius: 1rem;
+
+        margin-left: 1rem;
+    }
+
+    .material-symbols-outlined {
+        font-size: 4rem;
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
     }
 
     /* (Chrome, Safari, versões mais recentes do Opera) */
@@ -93,4 +111,5 @@
 
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
