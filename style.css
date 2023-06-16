@@ -114,4 +114,22 @@
         align-items: center;
     }
 
-    
+    dialog{
+        top: 30%;
+        left: 45%;
+
+        padding: 2rem;
+
+        border: 0 solid black;
+        border-radius: 10%;
+    }
+
+    dialog::backdrop{
+        background-color: black;
+        opacity: 0.6;
+    }
+
+    dialog button{
+        font-size: 2rem;
+        padding: 1rem;
+    }

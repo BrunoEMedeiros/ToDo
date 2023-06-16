@@ -14,7 +14,7 @@
                 placeholder="Digite aqui..."
                 name="tarefa" 
                 id="tarefa">
-                <button onclick="handleToDo()" id="add">+</button>
+                <button onclick="addTarefa()" id="add">+</button>
             </section>
             <section class="content">
                 <ul>
@@ -24,12 +24,19 @@
     </div>
     <dialog id="editar">
         <h1>Editar</h1>
-        <button onclick="closeEditModal()">Fechar</button>
+        <div>
+            <input type="text" name="edit_input" id="edit_input">
+            <button onclick="editToDo()">Salvar</button>
+            <button id="fechar_editar">Fechar</button>
+        </div>
     </dialog>
 
     <dialog id="excluir">
         <h1>Excluir</h1>
-        <button onclick="closeDeleteModal()">Fechar</button>
+        <div>
+            <button>Salvar</button>
+            <button id="fechar_excluir">Fechar</button>
+        </div>
     </dialog>
     <script src="./script.js"></script>
 </body>

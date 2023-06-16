@@ -1,90 +1,109 @@
+let listaTarefas: string[] = [];
+let lista: HTMLUListElement | null =
+document.querySelector('ul')!;
 
-    let listaToDo: string[] = [];
+function addTarefa(){
+    let tarefa: HTMLInputElement | null
+    = document.querySelector('#tarefa');
 
-    function openEditModal(){
-        let modal: HTMLDialogElement | null 
-        = document.querySelector('#editar')!;
-
-        modal?.showModal();
+    if(tarefa != null){
+        listaTarefas.push(tarefa.value)
+        carregarLista()
     }
+}
 
-    function closeEditModal(){
-        let modal: HTMLDialogElement | null 
-        = document.querySelector('#editar')!;
+function carregarLista(){
+    console.clear()
+    if(lista)
+        lista.innerHTML = "";
+    for(let i = 0; i < listaTarefas.length; i++){
+        let li: HTMLLIElement = 
+        document.createElement('li');
 
-        modal?.close()
-    }
+        let div: HTMLDivElement =
+        document.createElement('div');
 
-    function openDeleteModal(){
-        let modal: HTMLDialogElement | null 
-        = document.querySelector('#excluir')!;
+        //Criando botão de editar
+        let btn_edit: HTMLButtonElement = 
+        document.createElement('button');
+        btn_edit.setAttribute('class','botoes');
         
-        modal?.showModal();
-    }
+        let icon_edit: HTMLSpanElement =
+        document.createElement('span');
+        icon_edit.setAttribute('class','material-symbols-outlined');
+        icon_edit.addEventListener('click', () =>{
+            abrirModal('editar');
+        })
+        icon_edit.textContent = 'Edit';
+        btn_edit.appendChild(icon_edit);
+        
+        //Criando botão de deletar
+        let btn_delete: HTMLButtonElement = 
+        document.createElement('button');
+        btn_delete.setAttribute('class','botoes');
 
-    function closeDeleteModal(){
-        let modal: HTMLDialogElement | null 
-        = document.querySelector('#excluir')!;
+        let icon_delete: HTMLSpanElement =
+        document.createElement('span');
+        icon_delete.setAttribute('class','material-symbols-outlined');
+        icon_delete.addEventListener('click', () =>{
+            abrirModal('excluir');
+        })
+        icon_delete.textContent = 'delete';
+        btn_delete.appendChild(icon_delete);
 
-        modal?.close()
-    }
 
-    function handleToDo(){
-        let input: HTMLInputElement | null = 
-        document.querySelector('#tarefa')!;
+        let fechar_edit_modal: HTMLButtonElement | null
+        = document.querySelector('#fechar_editar')
+        let fechar_delete_modal: HTMLButtonElement | null
+        = document.querySelector('#fechar_excluir')
 
-        if(input.value !== ""){
-            let lista: HTMLUListElement | null =
-            document.querySelector('ul')!;
+        fechar_edit_modal?.addEventListener('click', () =>{
+            fecharModal('editar');
+        })
+        fechar_delete_modal?.addEventListener('click', () =>{
+            fecharModal('excluir');
+        })
 
-            let li: HTMLLIElement = 
-            document.createElement('li');
+        //Colando os botões na div de botões para
+        //facilitar a edição
+        div.appendChild(btn_edit);
+        div.appendChild(btn_delete);
 
-            let div: HTMLDivElement =
-            document.createElement('div');
+        //Criando div do card
+        let card: HTMLElement =
+        document.createElement('article');
+        card.innerText = listaTarefas[i];
 
-            let btn_edit: HTMLButtonElement = 
-            document.createElement('button');
-            btn_edit.setAttribute('class','botoes');
+        li.appendChild(card);
+        card.appendChild(div);
+        lista?.appendChild(li);
+    } 
+}
 
-            let icon_edit: HTMLSpanElement =
-            document.createElement('span');
-            icon_edit.setAttribute('class','material-symbols-outlined');
-            icon_edit.textContent = 'Edit';
-            icon_edit.addEventListener('click', openEditModal)
-            
-            btn_edit.appendChild(icon_edit);
-            
-            let btn_delete: HTMLButtonElement = 
-            document.createElement('button');
-            btn_delete.setAttribute('class','botoes');
+function excluirTarefa(tarefa: string){
+    listaTarefas = listaTarefas.filter(item => item !== tarefa)
+    carregarLista()
+}
 
-            let icon_delete: HTMLSpanElement =
-            document.createElement('span');
-            icon_delete.setAttribute('class','material-symbols-outlined');
-            icon_delete.textContent = 'delete';
-            icon_delete.addEventListener('click', openDeleteModal)
-            
-            btn_delete.appendChild(icon_delete);
-
-            div.appendChild(btn_edit);
-            div.appendChild(btn_delete);
-
-            let card: HTMLElement =
-            document.createElement('article');
-
-            let texto = 
-            document.createTextNode(input.value);
-
-            li.appendChild(card);
-            card.appendChild(texto);
-            card.appendChild(div);
-
-            lista.appendChild(li);
-
-            listaToDo.push(input.value);
+function editarTarefa(tarefa: string, novo_valor: string){
+    for(let i = 0; i < listaTarefas.length; i++){
+        if(listaTarefas[i] == tarefa){
+            listaTarefas[i] = novo_valor
         }
-
-        input.value = "";
-        console.log(listaToDo)
     }
+    carregarLista() 
+}
+
+function abrirModal(tipo: string){
+    let modal: HTMLDialogElement | null
+    = document.querySelector(`#${tipo}`)
+
+    modal?.showModal();
+}
+
+function fecharModal(tipo: string){
+    let modal: HTMLDialogElement | null
+    = document.querySelector(`#${tipo}`)
+
+    modal?.close();
+}
